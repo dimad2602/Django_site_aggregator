@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+<!--    <link rel="stylesheet" href="style.css">-->
+</head>
+<body>
+<p>
+    {{message}}
+</p>
+<p>
+    <a href="?var=1">Нажми на ссылку!</a>
+    <div class="notification js-notification hidden">
+          <div class="container">
+              <div class="text">Текст</div>
+              <div class="button">Окей</div>
+            <!-- <div class="notification-text">
+                Мы используем куки-файлы. Продолжая использовать наш сайт, вы соглашаетесь с этим.
+             </div>
+             <button class="notification-btn js-notification-btn">OK</button>-->
+          </div>
+    </div>
+</p>
+</body>
+</html>

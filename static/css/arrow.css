@@ -1,0 +1,87 @@
+{% load static %}
+body{
+    font-family: "Microsoft Sans Serif";
+    overflow-x: hidden;
+    background-image: url("/static/img/products_photo/background1.png");
+    height: 100%;
+    /*width: 1510px;*/
+
+}
+body a {
+    text-decoration: none;
+    color: #a667ea; }
+.b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: darkred;
+  border-color: darkgrey;
+}
+.form-control-dark:focus {
+  color: #fff;
+  background-color: darkred;
+  border-color: #fff;
+  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.text-small {
+  font-size: 85%;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+.up-btn {
+    background-color: #444; /*Цвет фона*/
+    color: #fff; /*Цвет текста в кнопке*/
+    padding: 20px; /*Внутренний отступ*/
+
+    position: fixed; /*Фиксированное позиционирование*/
+    bottom: 20px; /*Снизу*/
+    right: 20px; /*Справа*/
+    cursor: pointer; /*«Рука» при наведении*/
+
+    opacity: 0; /*Прозрачность 0%*/
+    visibility: hidden; /*Видимость на странице*/
+
+    transition: .3s all; /*Плавность изменения 3 миллисекунды*/
+}
+
+/*Активный класс*/
+.up-btn.is-show {
+    opacity: 1; /*Прозрачность 100%*/
+    visibility: visible; /*Видимость на странице*/
+}
+
+.how-scroll{
+    background-color: #444; /*Цвет фона*/
+    color: #fff; /*Цвет текста в кнопке*/
+    padding: 20px; /*Внутренний отступ*/
+
+    position: fixed; /*Фиксированное позиционирование*/
+    top: 20px;
+    right: 20px;
+    cursor: pointer; /*«Рука» при наведении*/
+
+    opacity: 0; /*Прозрачность 0%*/
+    visibility: hidden; /*Видимость на странице*/
+
+    transition: .3s all; /*Плавность изменения 3 миллисекунды*/
+}
+
+.how-scroll.is-show {
+    opacity: 1; /*Прозрачность 100%*/
+    visibility: visible; /*Видимость на странице*/
+}

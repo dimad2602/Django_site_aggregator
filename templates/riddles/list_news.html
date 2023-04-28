@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+
+    {% include "base1.html" %}
+
+    <style>
+        .newslist tbody tr {
+             overflow: hidden;
+             background: #3b729f;
+             color: #FFFFFF;
+             cursor:pointer;
+             height: 50px;
+         }
+         .newslist tbody tr {
+             -webkit-transition: all 0.3s; -o-transition: all 0.3s;
+             -moz-transition: all 0.3s; transition: all 0.3s;
+         }
+         .newslist tbody tr:hover {
+             background: #f3bd48;
+             color: #fff;
+         }
+         .block-pagination ul li {
+             padding: 5px;
+             border: 1px solid #3b729f;
+             width: 38px;
+             text-align: center;
+         }
+         .block-pagination ul li:hover {
+             background: #3b729f;
+             cursor: pointer;
+         }
+         .block-pagination ul li a {
+             padding: 8px 12px 8px 10px;
+         }
+    </style>
+</head>
+<body>
+
+<div class="container">
+     <div class="row">
+         <div class="col-md-12 d-flex justify-content-center">
+             <h2>{{ message }}</h2>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">
+            <table class="newslist" border="1" width="100%">
+                {% for news in news %}
+                    <tr onclick="window.location.href='/riddles/news/detail_news/{{ news.id }}/'; return false">
+<!--                         <td>{{ news.id }}</td>-->
+                         <td>{{ news.count }}</td>
+                         <td>{{ news.name }}</td>
+                         <td>{{ news.description }}</td>
+                        <td>
+                            <img src="{{ news.photo_url }}" alt="Новость" width="300">
+                             {% if newsphoto %}
+
+                             {% endif %}
+                         </td>
+                    </tr>
+                {% endfor %}
+            </table>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">&nbsp;</div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">&nbsp;</div>
+     </div>
+     <div class="row">
+         <div class="col-md-12 d-flex justify-content-center">
+             <div class="block-pagination">
+                {% if pages.has_other_pages %}
+                  <ul class="pagination">
+                    {% if pages.has_previous %}
+                        <li><a href="?page={{ pages.first_page_number }}">&laquo;</a></li>
+                        <li><a href="?page={{ pages.previous_page_number }}">&lt;</a></li>
+                    {% else %}
+                        <li class="disabled" ><span>&laquo;</span></li>
+                        <li class="disabled" ><span>&lt;</span></li>
+                    {% endif %}
+
+                    {% for i in pages.paginator.page_range %}
+                        {% if pages.number == i %}
+                            <li class="active" style="background: #3b729f;">
+                                <span style="color: #FFFFFF;">
+                                    {{ i }} <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if pages.has_next %}
+                        <li><a href="?page={{ pages.next_page_number }}">&gt;</a></li>
+                        <li><a href="?page={{ pages.paginator.num_pages }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                        <li class="disabled"><span>&gt;</span></li>
+                    {% endif %}
+                 </ul>
+                {% endif %}
+            </div>
+         </div>
+     </div>
+</div>
+</body>
+</html>

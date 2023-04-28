@@ -1,0 +1,31 @@
+.form1 {
+    padding-top: 20px;
+    vertical-align: center  ;
+}
+.fieldname{
+    padding-right: 10px;
+}
+.field{
+    padding-left: 10px;
+}
+.sendbtn{
+    padding-top: 20px;
+}
+textarea {
+    height: 50px;
+}
+body{
+    align-content: center;
+}
+form{
+    background: rgba(0,0,0, 0.192);
+    width: 60%;
+    height: 90%;
+    backdrop-filter: blur(5px);
+    border-radius: 360px;
+    vertical-align: center;
+    padding-top: 20px;
+}
+.table1{
+
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать новость</title>
+
+    {% include 'base1.html' %}
+
+</head>
+<body>
+
+<div class='container'>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h2>{{ message }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                  <form method="post" action="{% url 'riddles:news_save' %}">
+                      {% csrf_token %}
+                      <input type="hidden" name="id" value="{{ form.id }}">
+                      {% for field in form %}
+                          <tr>
+                              <td><b>{{ field.label }}</b></td>
+                              <td>{{ field }}</td>
+                          </tr>
+                      {% endfor %}
+                      <tr>
+                          <td colspan="2">
+                               <button type="submit">Сохранить</button>
+                          </td>
+                      </tr>
+                  </form>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

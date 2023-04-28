@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать игру</title>
+
+    {% include 'base1.html' %}
+    <link href="{% static 'css/editgame.css' %}" rel="stylesheet">
+
+</head>
+<body>
+<div class="col-md-12 d-flex justify-content-center">
+    <h2>{{ message }}</h2>
+</div>
+<div class='editcon' align="center">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                  <form method="post" action="{% url 'products:game_save' %}">
+                      {% csrf_token %}
+                      <input type="hidden" name="id" value="{{ form.id }}">
+                      {% for field in form %}
+                          <tr>
+                              <td><b>{{ field.label }}</b></td>
+                              <td>{{ field }}</td>
+                          </tr>
+                      {% endfor %}
+                      <tr>
+                          <td colspan="1" class="sendbtn">
+                               <button type="submit">Сохранить</button>
+                          </td>
+                      </tr>
+                  </form>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

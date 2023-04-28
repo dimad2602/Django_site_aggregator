@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/proba.css' %}" rel="stylesheet">
+    <!--<link rel="stylesheet" href="{% static 'style.css' %}">-->
+    {% include "base1.html" %}
+    <style>
+        .newslist tbody tr {
+             overflow: hidden;
+             background: #3b729f;
+             color: #FFFFFF;
+             cursor:pointer;
+             height: 50px;
+         }
+         .newslist tbody tr {
+             -webkit-transition: all 0.3s; -o-transition: all 0.3s;
+             -moz-transition: all 0.3s; transition: all 0.3s;
+         }
+         .newslist tbody tr:hover {
+             background: #f3bd48;
+             color: #fff;
+         }
+         .block-pagination ul li {
+             padding: 5px;
+             border: 1px solid #3b729f;
+             width: 38px;
+             text-align: center;
+         }
+         .block-pagination ul li:hover {
+             background: #3b729f;
+             cursor: pointer;
+         }
+         .block-pagination ul li a {
+             padding: 8px 12px 8px 10px;
+         }
+    </style>
+</head>
+<body>
+<div align="center"  class="text1" >
+    <h1>Приветсвуем!</h1>
+    <div class ="text2">
+    <a>Вы попали на сайт-каталогизатор игр. Здесь вы можете отслеживать ваши достижения в прохождении игр, и что самое интересное делиться с другими! Скорее регистрируйтесь, возможно вы первый, кто добавит вашу любимую игру в нашу библиотеку.</a>
+    </div>
+</div>
+    <p>
+{#        <a href="?var=1">Нажми на ссылку!</a>#}
+        <div class="notification js-notification hidden">
+              <div class="container">
+                  <div class="text">Мы используем куки-файлы. Продолжая использовать наш сайт. Вы соглашаетесь с этим.</div>
+                  <div class="button">Окей</div>
+              </div>
+        </div>
+    </p>
+{#    <div class="row p-1">#}
+{#        <div class="col-md-6 p-3" style="">#}
+{#            <button id="showbutton" class="btn btn-info"> Нажми на кнопку!</button>#}
+{#        </div>#}
+{#        <div class="col-md-6 p-3" style="">#}
+{##}
+{#        </div>#}
+{#    </div>#}
+
+<!--    -->
+    <div class="container" >
+     <div class="row" style="margin-top: 15%">
+         <div class="col-md-12 d-flex justify-content-center" >
+             <h2>{{ message }}</h2>
+         </div>
+     </div>
+{#     <div class="row">#}
+{#         <div class="col-md-12">#}
+{#            <table class="gameslist" border="1" width="100%">#}
+{#                {% for news in news %}#}
+{#                    <tr onclick="window.location.href='/riddles/news/detail_news/{{ news.id }}/'; return false">#}
+{#                         <td>{{ news.id }}</td>#}
+{#                         <td>{{ news.name }}</td>#}
+{#                         <td>{{ news.description }}</td>#}
+{#                        <td>#}
+{#                            <img src="{{ news.photo_url }}" alt="Новость" width="100">#}
+{#                             {% if newsphoto %}#}
+{##}
+{#                             {% endif %}#}
+{#                         </td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{#            </table>#}
+{#         </div>#}
+{#     </div>#}
+{#     <div class="row">#}
+{#         <div class="col-md-12">&nbsp;</div>#}
+{#     </div>#}
+{#     <div class="row">#}
+{#         <div class="col-md-12">&nbsp;</div>#}
+{#     </div>#}
+{#     <div class="row">#}
+{#         <div class="col-md-12 d-flex justify-content-center">#}
+{#             <div class="block-pagination">#}
+{#                {% if news.has_other_pages %}#}
+{#                  <ul class="pagination">#}
+{##}
+{#                    {% if news.has_previous %}#}
+{#                        <li><a href="?page={{ games.first_page_number }}">&laquo;</a></li>#}
+{#                        <li><a href="?page={{ games.previous_page_number }}">&lt;</a></li>#}
+{#                    {% else %}#}
+{#                        <li class="disabled" ><span>&laquo;</span></li>#}
+{#                        <li class="disabled" ><span>&lt;</span></li>#}
+{#                    {% endif %}#}
+{##}
+{#                    {% for i in news.paginator.page_range %}#}
+{#                        {% if news.number == i %}#}
+{#                            <li class="active" style="background: #3b729f;">#}
+{#                                <span style="color: #FFFFFF;">#}
+{#                                    {{ i }} <span class="sr-only">(current)</span>#}
+{#                                </span>#}
+{#                            </li>#}
+{#                        {% else %}#}
+{#                            <li><a href="?page={{ i }}">{{ i }}</a></li>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{##}
+{#                    {% if news.has_next %}#}
+{#                        <li><a href="?page={{ news.next_page_number }}">&gt;</a></li>#}
+{#                        <li><a href="?page={{ news.paginator.num_pages }}">&raquo;</a></li>#}
+{#                    {% else %}#}
+{#                        <li class="disabled"><span>&raquo;</span></li>#}
+{#                        <li class="disabled"><span>&gt;</span></li>#}
+{#                    {% endif %}#}
+{#                 </ul>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#         </div>#}
+{#     </div>#}
+<div class="card-container">
+  <div class="card card-1">
+    <div class="card-img"></div>
+    <a href="" class="card-link">
+      <div class="card-img-hovered"></div>
+    </a>
+    <div class="card-info">
+      <div class="card-about">
+        <a class="card-tag tag-news">Sport</a>
+      <div class="card-time">5/21/2022</div>
+      </div>
+      <h1 class="card-title">Смена ростера Na'Vi, конец ли это?</h1>
+      <div class="card-creator">by <a href="">Nikolay V.</a></div>
+    </div>
+  </div>
+  <div class="card card-2">
+    <div class="card-img"></div>
+    <a href="" class="card-link">
+      <div class="card-img-hovered"></div>
+    </a>
+    <div class="card-info">
+      <div class="card-about">
+        <a class="card-tag">Tech</a>
+      <div class="card-time">5/21/2022</div>
+      </div>
+      <h1 class="card-title">Мы запустили наше Веб-Приложение!</h1>
+      <div class="card-creator">by <a href="">Dmitry D.</a></div>
+    </div>
+  </div>
+  <div class="card card-3">
+    <div class="card-img"></div>
+    <a href="" class="card-link">
+      <div class="card-img-hovered"></div>
+    </a>
+    <div class="card-info">
+      <div class="card-about">
+        <a class="card-tag tag-deals">Game</a>
+      <div class="card-time">12/21/2012</div>
+      </div>
+      <h1 class="card-title">Инсайдер рассказал, когда анонсируют BioShock 4</h1>
+      <div class="card-creator">by <a href="">ANONIM</a></div>
+    </div>
+  </div>
+{#  <div class="card card-4">#}
+{#    <div class="card-img"></div>#}
+{#    <a href="" class="card-link">#}
+{#      <div class="card-img-hovered"></div>#}
+{#    </a>#}
+{#    <div class="card-info">#}
+{#      <div class="card-about">#}
+{#        <a class="card-tag tag-politics">Politics</a>#}
+{#      <div class="card-time">5/20/2018</div>#}
+{#      </div>#}
+{#      <h1 class="card-title">Net-Nutrality is coming to its end</h1>#}
+{#      <div class="card-creator">by <a href="">Gregoy Trem</a></div>#}
+{#    </div>#}
+{#  </div>#}
+</div>
+    <div class="row">
+         <div class="col-md-12">&nbsp;</div>
+     </div>
+
+</div>
+<div id="counter"></div>
+
+    <script src="{% static 'js/script1.js' %}"></script>
+<script type="module" src={% static 'js/js.cookie.js' %}></script>
+<script type="text/javascript">
+function setCookie(name,days) {
+    var expires = "";
+    var count = getCookie(name) - (-1);
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    if (getCookie(name) == 0) {
+        document.cookie = name + "=" + (1) + expires + "; path=/";
+    }
+    else {
+        document.cookie = name + "=" + count + expires + "; path=/";
+    }
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+setCookie("visitcount", 365)
+document.getElementById('counter').innerHTML = "Hello, you are " + getCookie("visitcount").length + " times Browse this page this time!";
+console.log("nepopal")
+</script>
+{#<script type="text/javascript">#}
+{#    import $.cookie from {% static 'js/jcookie.js' %}#}
+{#    console.log("Вывод модального log :)")#}
+{#$(function() {#}
+{#  // Проверяем запись в куках о посещении#}
+{#  // Если запись есть - ничего не происходит#}
+{#     if (!$.cookie('Dima')) {#}
+{#         console.log("Куки нот")#}
+{#  // если cookie не установлено появится окно#}
+{#  // с задержкой 5 секунд#}
+{#        //var delay_popup = 5000;#}
+        {#setTimeout("document.getElementById('parent_popup').style.display='block'", delay_popup);#}
+{#     }#}
+{#     console.log("Fil loh")#}
+{#     $.cookie('Dima', "Dzheglo", {#}
+{#         path: '/'#}
+{#    });#}
+{#);#}
+{#</script>#}
+</body>
+</html>

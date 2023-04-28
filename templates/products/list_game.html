@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игры</title>
+
+    {% include "base1.html" %}
+
+
+
+    <style>
+        td{
+
+        }
+        .gameslist{
+            margin-top: 6%;
+            margin-left: 10%;
+            text-align: center;
+        }
+        .gameslist tbody tr {
+             overflow: hidden;
+             background: rgba(97, 153, 106, 0.8);
+             color: #FFFFFF;
+             cursor:pointer;
+             height: 50px;
+            align-items: center;
+         }
+         .gameslist tbody tr {
+             -webkit-transition: all 0.3s; -o-transition: all 0.3s;
+             -moz-transition: all 0.3s; transition: all 0.3s;
+         }
+         .gameslist tbody tr:hover {
+             background: rgba(100, 130, 71, 0.8);
+             color: #fff;
+         }
+         .block-pagination ul li {
+             padding: 5px;
+             border: 1px solid #3b729f;
+             width: 38px;
+             text-align: center;
+         }
+         .block-pagination ul li:hover {
+             background: #3b729f;
+             cursor: pointer;
+         }
+         .block-pagination ul li a {
+             padding: 8px 12px 8px 10px;
+         }
+    </style>
+
+
+</head>
+<body>
+<div class="container">
+<!--    <label for="site-search">Поиск по списку:</label>-->
+<!--<input type="search" id="site-search" name="q">
+
+<button>Поиск</button>-->
+    <div class="row">
+         <div class="col-md-12 d-flex justify-content-center">
+             <h2>{{ message }}</h2>
+         </div>
+     </div>
+    <form class="input-group" action="{% url 'products:search_list' %}" method="get" accept-charset="utf-8">
+        <input type="text" placeholder="Поиск игры..." class="input form-control" name="q">
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn btn-primary"> <i class="fa fa-search"></i> Поиск</button>
+        </span>
+    </form>
+    {% if games %}
+     <div class="row">
+         <div class="col-md-12">
+
+            <table class="gameslist" border="2" width="80%">
+                <tr>
+                         <td onclick="window.location.href='/game/list_game/sort_id/'; return false">Номер</td>
+                         <td onclick="window.location.href='/game/list_game/sort_name/'; return false">Название</td>
+                         <td>Описание</td>
+                         <td onclick="window.location.href='/game/list_game/sort_status/'; return false">Статус</td>
+                         <td>Обложка</td>
+                </tr>
+
+                {% for game in games %}
+                    <tr onclick="window.location.href='/products/game/detail_game/{{ game.id }}/'; return false">
+<!--                         <td>{{ game.id }}</td>-->
+                         <td>{{ game.count }}</td>
+                         <td>{{ game.name }}</td>
+                         <td>{{ game.description }}</td>
+                         <td>{{ game.Status }}</td>
+<!--                         <td>{{ game.genre }}</td>-->
+                         <!--{% if photogame.photo %}
+                              <img class="img-article-left thumb" src="{{ photogame.photo.url }}" alt="Игра" width="300">
+                           {% endif %}
+                        <img class="img-article-left thumb" src="{{ gamephoto.photo.url }}" alt="Обложка" width="300">-->
+                         <!--{% for gamephoto in game.gamephoto %}
+                             <img src="{{ gamephoto.photo.url }}" alt="Игра" width="300">
+                         {% endfor %}-->
+
+<!--                        {% if gamephoto in game.gamephoto %}-->
+<!--                              <img src="{{ gamephoto.photo.url }}" alt="Игра" width="300">-->
+<!--                         {% endif %}-->
+                        <td>
+                             <!--{% if game.photogame.photo %}
+                                 <img class="img-article-left thumb" src="{{ game.photogame.photo.url }}" alt="Игра" width="300">
+                             {% endif %}-->
+                             <img src="{{ game.photo_url }}" alt="Игра" width="300">
+                             {% if gamephoto %}
+
+<!--                                <img src="{{ gamephoto.photo.url }}" alt="Игра" width="300">-->
+                             {% endif %}
+<!--                             <img src="{{ gamephoto.photo.url }}" alt="Обложка" width="300">-->
+                         </td>
+                    </tr>
+                {% endfor %}
+            </table>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">&nbsp;</div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">&nbsp;</div>
+     </div>
+
+    <div class="row">
+         <!--<ul>
+             {% if pages.has_previous %}
+                <li>
+                    <a class="previous" href="?page=
+                                   {{ pages.previous_page_number }}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}">
+                        Предыдущая
+                    </a>
+                  </li>
+               {% endif %}
+               {% for n in pages.paginator.page_range %}
+                    {% if n > pages.number|add:-4 and n < pages.number|add:4 %}
+                          <li class='{% if n == pages.number %}active{% else %}no-active{% endif %}'>
+                                <a href='?page={{ n }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'>{{ n }}</a>
+                           </li>
+                      {% endif %}
+                {% endfor %}
+
+                {% if pages.has_next %}
+                    <li>
+                         <a class="Next" href="?page=
+                                       {{ pages.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                             Следующая
+                         </a>
+                    </li>
+                 {% endif %}
+        </ul>-->
+         <div class="col-md-12 d-flex justify-content-center">
+             <div class="block-pagination">
+                {% if pages.has_other_pages %}
+                  <ul class="pagination">
+                    {% if pages.has_previous %}
+                        <li><a href="?page={{ pages.first_page_number }}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}">&laquo;</a></li>
+                        <li><a href="?page={{ pages.previous_page_number }}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}">&lt;</a></li>
+                    {% else %}
+                        <li class="disabled" ><span>&laquo;</span></li>
+                        <li class="disabled" ><span>&lt;</span></li>
+                    {% endif %}
+
+                    {% for i in pages.paginator.page_range %}
+                        {% if pages.number == i %}
+                            <li class="active" style="background: #3b729f;">
+                                <span style="color: #FFFFFF;">
+                                    {{ i }} <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                        {% else %}
+                            <li><a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if pages.has_next %}
+                        <li><a href="?page={{ pages.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&gt;</a></li>
+                        <li><a href="?page={{ pages.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                        <li class="disabled"><span>&gt;</span></li>
+                    {% endif %}
+                 </ul>
+                {% endif %}
+            </div>
+         </div>
+     </div>
+</div>
+
+
+<!-- Модальное Окно  -->
+<!--<div id="overlay">
+    <div class="popup">
+        <h2>Модальное Окно!</h2>
+        <p>
+            Ширина модального окна задана в процентах, в зависимости от ширины родительского контейнера, в данном примере это фон затемнения.
+         </p>
+         <div class="pl-left">
+               <img src="https://placeimg.com/320/320/tech">
+         </div>
+         <p>Предусмотрена возможность использования встроенных миниатюр, расположенных слева или справа, в отдельном div-контейнере с выделенным классом .pl-left и .pl-right соответственно.</p>
+         <div class="pl-right">
+               <img src="https://placeimg.com/320/320/nature">
+         </div>
+<p>Размер блока миниатюр так же определил в процентной записи (25%), тем самым обеспечив возможность пропорционального изменения, при просмотре на экранах различных пользовательских устройств.</p>
+       <p>
+           Простейшая анимация появления с помощью изменения свойства прозрачности (opacity) от 0 к 1
+       </p>
+        <button class="close" title="Закрыть" onclick="document.getElementById('overlay').style.display='none';"></button>
+    </div>
+</div>-->
+
+
+<!--<script type="text/javascript">
+        var delay_popup = 5000;
+        setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
+</script>-->
+{% else %}
+<a>Совпадение не найдено</a>
+{% endif %}
+</body>
+
+</html>

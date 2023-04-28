@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <h1 align="center">Регистрация</h1>
+     <form method="post">
+         {% csrf_token %}
+         {# Общие ошибки при авторизации пользователя #}
+         <div class="form-error">{{ form.non_field_errors }}</div>
+         <table>
+
+         {% for f in form %}
+             <tr>
+                 <td><label for="{{ f.id_for_label }}">{{ f.label }}</label></td>
+                 <td>
+                     {{ f }}
+                     {# Ошибки, связанные с заполнением полей #}
+                     <div class="form-error">{{ f.errors }}</div>
+                 </td>
+             </tr>
+
+
+         {% endfor %}
+         </table>
+         <button type="submit">Зарегистрироваться</button>
+     </form>
+</body>
+
+
+</html>

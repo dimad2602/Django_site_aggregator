@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание игры</title>
+    {% include "base1.html" %}
+    <link href="{% static 'css/creategame.css' %}" rel="stylesheet">
+</head>
+<body>
+<div align="center" style="padding: 20px 0 40px 0 ">
+    <h1> {{ message }} </h1>
+</div>
+<div align="center" class="form1">
+    <form method="post" action="/products/create/" enctype="multipart/form-data">  <!-- создаем форму, метод передачи данных post, шаблон для отработки action; enctype="multipart/form-data" это составной тип содержимого, он импользуеться для отправки данных из html формы(для передачи картинки)-->
+        {% csrf_token %}
+        <div class="table1">
+            <table>
+                {% for field in form %}
+                <tr>
+                    <td class="fieldname">{{ field.label_tag }}</td>
+                    <td class="field">{{ field }}</td>
+                </tr>
+               {% endfor %}
+               {% for field in photogame %}
+                    <tr>
+                        <td>{{ field.label }}</td>
+                        <td>{{ field }}</td>
+                    </tr>
+               {% endfor %}
+            </table>
+        </div>
+        {% comment %}<table>  автоматический рендер
+        {{ form.as_table }}
+            </table>{% endcomment %}
+        <div class="sendbtn">
+            <button type="submit">Отправить</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

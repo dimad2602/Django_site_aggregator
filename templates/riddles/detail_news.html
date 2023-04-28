@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новость</title>
+    {% include "base1.html" %}
+</head>
+<body>
+<div class='container'>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h2>{{ message }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                   <tr>
+                       <td rowspan="6">
+                           {% if newsphoto %}
+                              <img src="{{ newsphoto.photo.url }}" alt="Новость" width="300">
+                           {% endif %}
+                       </td>
+                   </tr>
+                       <tr>
+                           <td>Назание</td>
+                           <td>{{ news.name }}</td>
+                       </tr>
+                   <tr>
+                       <td>Описание</td>
+                       <td>{{ news.description }}</td>
+                   </tr>
+                   <tr>
+                       <td colspan="2">&nbsp;</a>
+                       </td>
+                   </tr>
+                    {% if request.user.is_authenticated and request.user.is_superuser%}
+                       <tr>
+                                   <td colspan="2"><a href="/riddles/news/edit/{{ news.id }}/">Редактировать запись</a>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td colspan="2"><a href="/riddles/news/remove/{{ news.id }}/">Заблокировать запись</a>
+                                   </td>
+                               </tr>
+                    {% endif %}
+                </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

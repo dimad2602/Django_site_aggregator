@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Детализация игры</title>
+    {% include "base1.html" %}
+    <link href="{% static 'css/detailgame.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class='container'>
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h2 style="padding: 20px 0 40px 0 ">{{ game.name }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table align="center">
+                   <tr>
+                       <td rowspan="100" valign="top" style=" padding-right: 40px; padding-left: 30px; padding-top: 30px">
+                           {% if gamephoto %}
+                              <img src="{{ gamephoto.photo.url }}" alt="Игра" width="250" style="border-radius: 20px" >
+                           {% endif %}
+                       </td>
+                   </tr>
+                   <div class="contentgame">
+                       <tr>
+                           <td class="con" align="center">Описание</td>
+                       </tr>
+
+                       <tr>
+                           <td align="center" style=" width: 100%; min-width: 1px">{{ game.description }}</td>
+                       </tr>
+
+                       <tr>
+                           <td class="con" align="center">Разработчик</td>
+                       </tr>
+                       <tr><td><a style="padding-top: 50px"></a></td></tr>
+                       <tr>
+                           <td align="center" valign="center" class="val">{{ game.developer }}</td>
+                       </tr>
+                       <tr><td><a style="padding-top: 50px"></a></td></tr>
+                       <tr>
+                           <td class="con" align="center">Издатель</td>
+                       </tr>
+                       <tr><td><a style="padding-top: 50px"></a></td></tr>
+                       <tr>
+                           <td align="center" valign="center" class="val"> {{ game.publisher }}</td>
+                       </tr>
+                       <tr>
+                           <td class="con" align="center">Прогресс</td>
+                       </tr>
+                       <tr>
+                           <td align="center" valign="center" class="val"> {{ game.Status }}</td>
+                       </tr>
+                   </div>
+{#                   <tr>#}
+{#                       <td colspan="2">&nbsp;</a>#}
+{#                       </td>#}
+{#                   </tr>#}
+{#                   <tr>#}
+{#                       <td colspan="10" align="right"><a href="/products/game/edit/{{ game.id }}/">Редактировать игру</a>#}
+{#                       </td>#}
+{#                   </tr>#}
+                   <tr>
+{#                       <td colspan="10" align="right"><a href="/products/game/remove/{{ game.id }}/">Удалить игру</a>#}
+{#                       </td>#}
+                       <td></td>
+                       <td style="padding-left: 70px ">
+                           <div class="dropdown text-end">
+                                <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="float: left"></a>
+                                <ul class="dropdown-menu text-small dropdown-menu-end" aria-labelledby="dropdownUser1" style="position: sticky; right: 0px; top: 20px;">
+                                    <a href="/products/game/edit/{{ game.id }}/">Редактировать игру</a>
+                                    <a href="/products/game/remove/{{ game.id }}/">Удалить игру</a>
+                                </ul>
+                            </div>
+                       </td>
+                   </tr> {# Выпадающий список таблицы #}
+                </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

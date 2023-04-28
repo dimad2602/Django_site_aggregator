@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+
+    {% include "base1.html" %}
+
+    <style>
+        .userslist{
+            margin-top: 2%;
+            text-align: center;
+        }
+        .userslist tbody tr {
+             overflow: hidden;
+             background: rgba(97, 153, 106, 0.8);
+             color: #FFFFFF;
+             cursor:pointer;
+             height: 50px;
+         }
+         .userslist tbody tr {
+             -webkit-transition: all 0.3s; -o-transition: all 0.3s;
+             -moz-transition: all 0.3s; transition: all 0.3s;
+         }
+         .userslist tbody tr:hover {
+             background: rgba(100, 130, 71, 0.8);
+             color: #fff;
+         }
+         .block-pagination ul li {
+             padding: 5px;
+             border: 1px solid #3b729f;
+             width: 38px;
+             text-align: center;
+         }
+         .block-pagination ul li:hover {
+             background: #3b729f;
+             cursor: pointer;
+         }
+         .block-pagination ul li a {
+             padding: 8px 12px 8px 10px;
+         }
+    </style>
+</head>
+<body>
+
+<div class="container">
+     <div class="row">
+         <div class="col-md-12 d-flex justify-content-center">
+             <h2>{{ message }}</h2>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">
+            <table class="userslist" border="2" width="100%">
+                {% for user in users %}
+                    <tr onclick="window.location.href='/register/customer/detail/{{ user.id }}/'; return false">
+                         <td>{{ user.id }}</td>
+                         <td>{{ user.name }}</td>
+                         <td >
+                            <img src="{{ user.photo_url }}" alt="Новость" width="300" >
+                         </td>
+                     </tr>
+
+                {% endfor %}
+            </table>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">&nbsp;</div>
+     </div>
+     <div class="row">
+         <div class="col-md-12">&nbsp;</div>
+     </div>
+     <div class="row">
+         <div class="col-md-12 d-flex justify-content-center">
+             <div class="block-pagination">
+                {% if users.has_other_pages %}
+                  <ul class="pagination">
+
+                    {% if users.has_previous %}
+                        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled" ><span>&laquo;</span></li>
+                    {% endif %}
+
+                    {% for i in users.paginator.page_range %}
+                        {% if users.number == i %}
+                            <li class="active" style="background: #3b729f;">
+                                <span style="color: #FFFFFF;">
+                                    {{ i }} <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if users.has_next %}
+                        <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                 </ul>
+                {% endif %}
+            </div>
+         </div>
+     </div>
+</div>
+</body>
+</html>

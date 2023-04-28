@@ -1,0 +1,14 @@
+.editcon{
+    background: rgba(0,0,0, 0.192);
+    width: 65%;
+    height: 90%;
+    backdrop-filter: blur(5px);
+    border-radius: 100px;
+    margin-top: 3%;
+    margin-left: 17.5%;
+    padding-top: 2%;
+}
+.sendbtn{
+    padding-left: 40%;
+    padding-bottom: 7%;
+}
